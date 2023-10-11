@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>oracle数据库操作 | 记录 V1.0</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/public/roc.png">
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/assets/css/0.styles.12e0ab05.css" as="style"><link rel="preload" href="/assets/js/app.4b9f0a6a.js" as="script"><link rel="preload" href="/assets/js/2.2dc7f74a.js" as="script"><link rel="preload" href="/assets/js/8.16563041.js" as="script"><link rel="prefetch" href="/assets/js/10.9cbda4be.js"><link rel="prefetch" href="/assets/js/11.602f6d35.js"><link rel="prefetch" href="/assets/js/12.29fc785f.js"><link rel="prefetch" href="/assets/js/13.836b7877.js"><link rel="prefetch" href="/assets/js/14.5964bedc.js"><link rel="prefetch" href="/assets/js/15.741dfcaf.js"><link rel="prefetch" href="/assets/js/16.859181ea.js"><link rel="prefetch" href="/assets/js/17.ea2ab5b9.js"><link rel="prefetch" href="/assets/js/18.a30b886d.js"><link rel="prefetch" href="/assets/js/19.82560418.js"><link rel="prefetch" href="/assets/js/20.8c2c0626.js"><link rel="prefetch" href="/assets/js/21.8debe47e.js"><link rel="prefetch" href="/assets/js/22.18ad9d9b.js"><link rel="prefetch" href="/assets/js/23.183b6984.js"><link rel="prefetch" href="/assets/js/24.1d0701eb.js"><link rel="prefetch" href="/assets/js/3.3df301be.js"><link rel="prefetch" href="/assets/js/4.81e675e8.js"><link rel="prefetch" href="/assets/js/5.a76c12a1.js"><link rel="prefetch" href="/assets/js/6.5f80c3c1.js"><link rel="prefetch" href="/assets/js/7.d6c07dc4.js"><link rel="prefetch" href="/assets/js/9.8b248ae8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.12e0ab05.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="./roc.png" alt="记录 V1.0" class="logo"> <span class="site-name can-hide">记录 V1.0</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  博客首页
+</a></div><div class="nav-item"><a href="/shouye/" class="nav-link">
+  前端笔记
+</a></div><div class="nav-item"><a href="/docs/" class="nav-link">
+  前端文档
+</a></div><div class="nav-item"><a href="/globe/" class="nav-link">
+  后端PHP
+</a></div><div class="nav-item"><a href="/cloud/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  运维实施
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  博客首页
+</a></div><div class="nav-item"><a href="/shouye/" class="nav-link">
+  前端笔记
+</a></div><div class="nav-item"><a href="/docs/" class="nav-link">
+  前端文档
+</a></div><div class="nav-item"><a href="/globe/" class="nav-link">
+  后端PHP
+</a></div><div class="nav-item"><a href="/cloud/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  运维实施
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/cloud/" aria-current="page" class="active sidebar-link">oracle数据库操作</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/cloud/#oracle数据库操作" class="sidebar-link">oracle数据库操作</a></li><li class="sidebar-sub-header"><a href="/cloud/#增加数据文件" class="sidebar-link">增加数据文件</a></li><li class="sidebar-sub-header"><a href="/cloud/#csv导入到sqlserver" class="sidebar-link">csv导入到sqlserver</a></li><li class="sidebar-sub-header"><a href="/cloud/#mysql-创建用户并授权" class="sidebar-link">mysql 创建用户并授权</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="oracle数据库操作"><a href="#oracle数据库操作" class="header-anchor">#</a> oracle数据库操作</h2> <p>数据导入导出，用户创建授权</p> <hr> <div class="language-sh extra-class"><pre class="language-sh"><code>创建表空间指定用户授权
+create tablespace smarter  
+logging  
+datafile <span class="token string">'D:\app\Administrator\oradata\orcl\smarter02.dbf'</span> 
+size 50m  
+autoextend on  
+next 50m maxsize 30720m  
+extent management <span class="token builtin class-name">local</span><span class="token punctuation">;</span> 
+
+create user gps_reb identified by <span class="token number">123456</span> default tablespace smarter<span class="token punctuation">;</span>
+
+grant connect,resource,dba to gps_reb<span class="token punctuation">;</span>
+</code></pre></div><p>导入:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>IMP gps_reb/123456@172.15.110.87/ORCL2 <span class="token assign-left variable">file</span><span class="token operator">=</span>D:<span class="token punctuation">\</span>dataa<span class="token punctuation">\</span><span class="token number">9</span>.dmp <span class="token assign-left variable">full</span><span class="token operator">=</span>y <span class="token assign-left variable">tables</span><span class="token operator">=</span><span class="token punctuation">(</span>R_WEAK_OLAP<span class="token punctuation">)</span>
+</code></pre></div><p>导出:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>exp gps_reb/123456@172.15.110.56/orcl <span class="token assign-left variable">file</span><span class="token operator">=</span>D:<span class="token punctuation">\</span>expdp<span class="token punctuation">\</span><span class="token number">2128</span>.dmp <span class="token assign-left variable">tables</span><span class="token operator">=</span>SRC_GPS_20180121_U <span class="token assign-left variable">tables</span><span class="token operator">=</span><span class="token punctuation">(</span>R_WEAK_OLAP<span class="token punctuation">)</span>
+</code></pre></div><h2 id="增加数据文件"><a href="#增加数据文件" class="header-anchor">#</a> 增加数据文件</h2> <p>当数据空间不足时</p> <img src="/yun1.png"> <h2 id="csv导入到sqlserver"><a href="#csv导入到sqlserver" class="header-anchor">#</a> csv导入到sqlserver</h2> <img src="/yun2.png"> <hr> <img src="/yun3.png"> <hr> <img src="/yun4.png"> <h2 id="mysql-创建用户并授权"><a href="#mysql-创建用户并授权" class="header-anchor">#</a> mysql 创建用户并授权</h2> <p>show databases;</p> <img src="/yun5.png"> <p>create database smarter;</p> <img src="/yun6.png"> <p>grant all on 库.* to 'username'@'localhost或%' identified by 'password';
+flush privileges;</p> <p>例如
+grant all on smarter.* to 'smarter'@'%' identified by '1';</p> <img src="/yun7.png"> <p>flush privileges;</p> <img src="/yun8.png"></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.4b9f0a6a.js" defer></script><script src="/assets/js/2.2dc7f74a.js" defer></script><script src="/assets/js/8.16563041.js" defer></script>
+  </body>
+</html>
